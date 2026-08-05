@@ -1,10 +1,37 @@
 #ifndef OCRDOCUMENT_H
 #define OCRDOCUMENT_H
+#include <QString>
+#include <QImage>
+#include <QFileDialog>
 
-class OCRDocument
+#include <QGuiApplication>
+#include <QScreen>
+
+#include "screenselector.h"
+
+
+class OCRDocument : public QObject
 {
+    Q_OBJECT
+
 public:
-    OCRDocument();
+    explicit OCRDocument(QObject *parent = nullptr);
+
+    QString fileName;
+    QString filePath;
+    QImage image;
+    QString recognizedText;
+
+
+    QScreen* screen;
+
+
+    void uploadImage();
+    public slots:
+        void takeAScreenshot(const QRect &rect);
+
+    signals:
+        void screenshotReady(const QPixmap &pixmap);
 };
 
 #endif // OCRDOCUMENT_H
