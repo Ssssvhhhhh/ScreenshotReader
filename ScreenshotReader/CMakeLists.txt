@@ -23,6 +23,11 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(ScreenshotReader
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
+        ocrservice.h ocrservice.cpp
+        tesseractengine.h tesseractengine.cpp
+        imageprocessor.h imageprocessor.cpp
+        ocrdocument.h ocrdocument.cpp
+        ocrworker.h ocrworker.cpp
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET ScreenshotReader APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
