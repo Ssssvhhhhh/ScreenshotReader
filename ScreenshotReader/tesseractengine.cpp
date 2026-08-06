@@ -3,6 +3,8 @@
 TesseractEngine::TesseractEngine()
 {
     initialized = (api.Init("tessdata", "rus+eng") == 0);
+    api.SetPageSegMode(tesseract::PSM_AUTO);
+
 }
 
 TesseractEngine::~TesseractEngine()

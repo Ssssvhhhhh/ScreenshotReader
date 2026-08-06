@@ -5,6 +5,7 @@
 #include "OCRDocument.h"
 #include "screenselector.h"
 #include "tesseractengine.h"
+#include "imageprocessor.h"
 
 #include <tesseract/baseapi.h>
 #include <leptonica/allheaders.h>
@@ -36,5 +37,6 @@ private:
     OCRDocument* ocrdDoc;
     ScreenSelector* selector;
     TesseractEngine* tesEng;
+    ImageProcessor* imgProc;
 };
 #endif // MAINWINDOW_H

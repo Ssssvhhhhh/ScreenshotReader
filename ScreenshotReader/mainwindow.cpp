@@ -50,13 +50,19 @@ void MainWindow::showScreenshot(const QPixmap &pixmap)
     ui->label->setPixmap(pixmap);
 
 
-
     QImage image = pixmap.toImage();
+    imgProc = new ImageProcessor();
+
+
+    image = imgProc->preprocess(image);
     QString temp = QDir::tempPath() + "/ocr.png";
     image.save(temp);
 
+    //qDebug() << imageNEW.format();
+
+
     tesEng = new TesseractEngine();
 
-    ui->label_2->setText(tesEng->imageToText(temp));
+    ui->textBrowser->setText(tesEng->imageToText(temp));
 }
 
