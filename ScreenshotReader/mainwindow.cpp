@@ -23,6 +23,8 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
     delete ui;
+    delete tesEng;
+
 }
 
 void MainWindow::on_uploadBtn_clicked()
@@ -46,5 +48,15 @@ void MainWindow::showScreenshot(const QPixmap &pixmap)
 {
     show();
     ui->label->setPixmap(pixmap);
+
+
+
+    QImage image = pixmap.toImage();
+    QString temp = QDir::tempPath() + "/ocr.png";
+    image.save(temp);
+
+    tesEng = new TesseractEngine();
+
+    ui->label_2->setText(tesEng->imageToText(temp));
 }
 

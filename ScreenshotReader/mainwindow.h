@@ -4,6 +4,11 @@
 #include <QMainWindow>
 #include "OCRDocument.h"
 #include "screenselector.h"
+#include "tesseractengine.h"
+
+#include <tesseract/baseapi.h>
+#include <leptonica/allheaders.h>
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -19,6 +24,8 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+
+
 private slots:
     void on_uploadBtn_clicked();
     void on_takeScreenshotBtn_clicked();
@@ -28,5 +35,6 @@ private:
     Ui::MainWindow *ui;
     OCRDocument* ocrdDoc;
     ScreenSelector* selector;
+    TesseractEngine* tesEng;
 };
 #endif // MAINWINDOW_H
