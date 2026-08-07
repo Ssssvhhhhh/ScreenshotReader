@@ -4,8 +4,8 @@
 #include <QMainWindow>
 #include "OCRDocument.h"
 #include "screenselector.h"
-#include "tesseractengine.h"
-#include "imageprocessor.h"
+#include "ocrservice.h"
+
 
 #include <tesseract/baseapi.h>
 #include <leptonica/allheaders.h>
@@ -36,7 +36,6 @@ private:
     Ui::MainWindow *ui;
     OCRDocument* ocrdDoc;
     ScreenSelector* selector;
-    TesseractEngine* tesEng;
-    ImageProcessor* imgProc;
+    OCRService *ocrSer;
 };
 #endif // MAINWINDOW_H

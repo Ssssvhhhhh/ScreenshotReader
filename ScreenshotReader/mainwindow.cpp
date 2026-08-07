@@ -12,7 +12,7 @@ MainWindow::MainWindow(QWidget *parent)
     selector = new ScreenSelector(nullptr);
 
 
-
+    ocrSer = new OCRService();
     ocrdDoc  = new OCRDocument(this);
 
     connect(selector,&ScreenSelector::regionSelected,ocrdDoc,&OCRDocument::takeAScreenshot);
@@ -23,7 +23,7 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
     delete ui;
-    delete tesEng;
+    //delete tesEng;
 
 }
 
@@ -49,20 +49,9 @@ void MainWindow::showScreenshot(const QPixmap &pixmap)
     show();
     ui->label->setPixmap(pixmap);
 
-
     QImage image = pixmap.toImage();
-    imgProc = new ImageProcessor();
+    ocrSer->recognize(image);
 
-
-    image = imgProc->preprocess(image);
-    QString temp = QDir::tempPath() + "/ocr.png";
-    image.save(temp);
-
-    //qDebug() << imageNEW.format();
-
-
-    tesEng = new TesseractEngine();
-
-    ui->textBrowser->setText(tesEng->imageToText(temp));
+    ui->textBrowser->setText(ocrSer->recognize(image));
 }
 
