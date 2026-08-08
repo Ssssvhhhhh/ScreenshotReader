@@ -15,7 +15,10 @@ void OCRDocument::uploadImage()
 
     QPixmap image(filePath);
 
-    emit screenshotReady(image);
+    //QImage readyImage = image.toImage();
+
+
+    emit screenshotReady(image.toImage());
 
 }
 
@@ -23,12 +26,13 @@ void OCRDocument::takeAScreenshot(const QRect &rect)
 {
     QScreen *screen = QGuiApplication::primaryScreen();
 
-    QPixmap image = screen->grabWindow(
+    QPixmap imagePixmap = screen->grabWindow(
         0,
         rect.x(),
         rect.y(),
         rect.width(),
         rect.height());
 
-    emit screenshotReady(image);
+
+    emit screenshotReady(imagePixmap.toImage());
 }

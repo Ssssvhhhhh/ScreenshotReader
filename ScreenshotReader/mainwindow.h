@@ -5,6 +5,7 @@
 #include "OCRDocument.h"
 #include "screenselector.h"
 #include "ocrservice.h"
+#include "ocrworker.h"
 
 
 #include <tesseract/baseapi.h>
@@ -30,12 +31,18 @@ public:
 private slots:
     void on_uploadBtn_clicked();
     void on_takeScreenshotBtn_clicked();
-    void showScreenshot(const QPixmap &pixmap);
+    void showScreenshot(const QImage &image);
+    void showRecognizedText(const QString& text);
+
+signals:
+    void startOCR(const QImage& image);
 
 private:
     Ui::MainWindow *ui;
     OCRDocument* ocrdDoc;
     ScreenSelector* selector;
     OCRService *ocrSer;
+    OCRWorker* worker;
+    QThread *thread;
 };
 #endif // MAINWINDOW_H

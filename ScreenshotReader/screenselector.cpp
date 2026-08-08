@@ -7,14 +7,9 @@ ScreenSelector::ScreenSelector(QWidget *parent)
 {
     ui->setupUi(this);
 
-    setWindowFlags(Qt::FramelessWindowHint |
-                   Qt::WindowStaysOnTopHint |
-                   Qt::Tool);
-
+    setWindowFlags(Qt::FramelessWindowHint |Qt::WindowStaysOnTopHint |Qt::Tool);
     setAttribute(Qt::WA_TranslucentBackground);
-
     setGeometry(QGuiApplication::primaryScreen()->geometry());
-
     ruberBand = new QRubberBand(QRubberBand::Rectangle, this);
 }
 

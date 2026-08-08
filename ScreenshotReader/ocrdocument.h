@@ -27,11 +27,12 @@ public:
 
 
     void uploadImage();
+
     public slots:
         void takeAScreenshot(const QRect &rect);
 
     signals:
-        void screenshotReady(const QPixmap &pixmap);
+        void screenshotReady(const QImage &image);
 };
 
 #endif // OCRDOCUMENT_H
