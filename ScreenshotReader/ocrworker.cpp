@@ -10,17 +10,11 @@ OCRWorker::OCRWorker(QObject *parent) : QObject(parent)
 
 void OCRWorker::doWork(const QImage &image)
 {
-    qDebug() << "Работа началась в потоке:" << QThread::currentThreadId();
+
+    QString result = ocrSer->recognize(image);
 
 
-    qDebug() << "===== OCR START =====";
-    qDebug() << "Null:" << image.isNull();
-    qDebug() << "Size:" << image.size();
-    qDebug() << "Format:" << image.format();
-
-
-
-    emit finished(ocrSer->recognize(image));
-    qDebug() << "Работа end в потоке:" << QThread::currentThreadId();
+    //emit progress(101);
+    emit finished(result);
 
 }

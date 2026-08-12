@@ -11,6 +11,9 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
+find_package(Qt6 REQUIRED COMPONENTS Svg)
+
+
 include_directories("C:/msys64/mingw64/include")
 link_directories("C:/msys64/mingw64/lib")
 
@@ -19,6 +22,9 @@ set(PROJECT_SOURCES
         mainwindow.cpp
         mainwindow.h
         mainwindow.ui
+        svgframe.h
+        svgframe.cpp
+
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
@@ -31,6 +37,8 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         ocrdocument.h ocrdocument.cpp
         ocrworker.h ocrworker.cpp
         screenselector.h screenselector.cpp screenselector.ui
+        svgframe.h svgframe.cpp
+
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET ScreenshotReader APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
@@ -51,10 +59,13 @@ else()
 endif()
 
 
+target_include_directories(ScreenshotReader PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+
 target_link_libraries(ScreenshotReader PRIVATE
     Qt${QT_VERSION_MAJOR}::Widgets
     tesseract
     leptonica
+    PRIVATE Qt6::Svg
 )
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
 # If you are developing for iOS or macOS you should consider setting an

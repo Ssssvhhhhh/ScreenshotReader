@@ -16,6 +16,7 @@ public:
 
 signals:
     void finished(const QString& text);
+    //void progress(const int& percent);
 
 private:
     OCRService* ocrSer;

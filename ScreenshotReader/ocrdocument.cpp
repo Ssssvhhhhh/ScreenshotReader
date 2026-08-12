@@ -17,7 +17,6 @@ void OCRDocument::uploadImage()
 
     //QImage readyImage = image.toImage();
 
-
     emit screenshotReady(image.toImage());
 
 }

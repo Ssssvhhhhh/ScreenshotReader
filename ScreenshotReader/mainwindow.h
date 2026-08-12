@@ -7,6 +7,12 @@
 #include "ocrservice.h"
 #include "ocrworker.h"
 
+#include <QTimer>
+#include <QMovie>
+#include <QMouseEvent>
+
+#include <QSvgRenderer>
+
 
 #include <tesseract/baseapi.h>
 #include <leptonica/allheaders.h>
@@ -28,11 +34,21 @@ public:
 
 
 
+    //void mouseEvent
+
+
+    void hideWindow();
+    void exit();
+
+
 private slots:
     void on_uploadBtn_clicked();
     void on_takeScreenshotBtn_clicked();
     void showScreenshot(const QImage &image);
     void showRecognizedText(const QString& text);
+    void showLoadingAnimation();
+    void on_hideBtn_clicked();
+    void on_exitBtn_clicked();
 
 signals:
     void startOCR(const QImage& image);
@@ -44,5 +60,6 @@ private:
     OCRService *ocrSer;
     OCRWorker* worker;
     QThread *thread;
+    QMovie* movie;
 };
 #endif // MAINWINDOW_H
