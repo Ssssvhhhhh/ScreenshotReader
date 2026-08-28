@@ -20,8 +20,8 @@ Screenshots will be added as the application develops.
 
 ![Text Recognition](https://github.com/Ssssvhhhhh/ScreenshotReader/blob/main/Readme-images/img3.png)
 
-
 ---
+
 
 ## Features
 
@@ -34,7 +34,7 @@ Screenshots will be added as the application develops.
 * Qt-based desktop interface
 * Local image processing
 
----
+
 
 ## Technologies
 
@@ -46,7 +46,7 @@ Screenshots will be added as the application develops.
 | Leptonica     | Image processing              |
 | CMake         | Build system                  |
 
----
+
 
 
 ### Requirements
@@ -102,7 +102,7 @@ The project also provides practical experience with:
 * GUI development
 * CMake
 
----
+
 
 # License
 [License](https://github.com/Ssssvhhhhh/ScreenshotReader/blob/main/LICENSE)
