@@ -1,4 +1,4 @@
-# Image Text Recognizer
+# Screenshot Reader
 
 A desktop OCR application built with **C++ and Qt**, powered by **Tesseract OCR** for extracting text from images.
 
